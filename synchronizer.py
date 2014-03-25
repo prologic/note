@@ -221,6 +221,26 @@ class NeighborManager(threading.Thread):
             print "Exiting"
             sys.exit(1)
 
+   def getNeighbors(self):
+      with self.neighborLock:
+         neighbors = copy.deepcopy(self.activeNeighbors)
+      return neighbors
+
+
+class NoteSynchronizer(threading.Thread):
+
+   def __init__(self, neighborManager):
+
+      self.neighborManager = neighborManager
+
+   def run(self):
+
+      neighbors = self.neighborManager.getNeighbors()
+
+      for neigh in neighbors:
+
+
+
 
 def main():
 
