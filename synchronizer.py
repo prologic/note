@@ -76,7 +76,7 @@ class Beaconer(threading.Thread):
 
          if read:
             [self.readSocket(s) for s in read]
-            timeout = self.helloInterval - (time.time() - self.lastSocketCall )
+            timeout = self.helloInterval - (time.time() - self.lastSocketCall)
          else:
             self.writeSocket(self.sock)
             self.lastSocketCall = time.time()
