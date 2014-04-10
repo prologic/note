@@ -203,9 +203,9 @@ class mongoDB(dbBaseClass):
       for coll in collections:
          note = self.noteDB[coll].find_one({"ID": itemID})
          if note is not None:
+            del note["_id"]
             break
 
-      del note["_id"]
       return note
 
    def getItemType(self, itemID):
