@@ -50,7 +50,9 @@ class Beaconer(threading.Thread):
       self.nodeName = nodeName
       self.lock = lock
       self.activeNeighbors = activeNeighbors
-      helloDict = {"NOTEMSG": "HELLO", "FROM": self.nodeName, "DATE": time.time()}
+      helloDict = {"NOTEMSG": "HELLO",
+                   "FROM": self.nodeName,
+                   "DATE": time.time()}
       self.helloMessage = json.dumps(helloDict)
       self.config = copy.deepcopy(config)
 
@@ -105,7 +107,8 @@ class Beaconer(threading.Thread):
       """
 
       for neigh in self.config['neighbors']:
-         sock.sendto(self.helloMessage, (neigh['address'], self.config['port']))
+         sock.sendto(self.helloMessage,
+                     (neigh['address'], self.config['port']))
 
    def readSocket(self, sock):
       """Get the message from the socket and call adNeighbor
@@ -162,7 +165,8 @@ class NeighborReaper(threading.Thread):
 
          with self.lock:
             for neigh in activeNeighborsKeys:
-               if startTime - self.activeNeighbors[neigh]['receivedTime'] > self.reapInterval:
+               delay = startTime - self.activeNeighbors[neigh]['receivedTime']
+               if delay > self.reapInterval:
                   print 'reaping {0}'.format(neigh)
                   del self.activeNeighbors[neigh]
 
