@@ -6,7 +6,8 @@ __version__ = 0.1
 __todo__ = '''
 -add support for dropbox/box backups
 -make install command that copies template files to home
--import contacts from google - https://developers.google.com/google-apps/contacts/v3/
+-import contacts from google -
+   https://developers.google.com/google-apps/contacts/v3/
 -switch to a SQL database?
 -add goodreads book
 '''
@@ -15,13 +16,15 @@ __added_features__ = '''
 -make a note info command which shows note, tags and all other metadata
 -add ability to change todo state
 -add ability to edit note/todo/contact
--add a verify command that checks IDs collection against other collections for consistency
+-add a verify command that checks IDs collection against other collections
+   for consistency
 -add ability to delete note/todo/contact
 -add system for handling contact (email, phone, address, etc)
 -complete encrpytion implementation
 -fine tune search
 -possibly rewrite code to take utilize inheritance
--when editing a note, should the timestamp be the original, the newest or a list of all edits?
+-when editing a note, should the timestamp be the original, the newest or a
+   list of all edits?
 '''
 
 import subprocess
