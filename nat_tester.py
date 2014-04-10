@@ -9,11 +9,13 @@ import time
 
 
 def server():
-   """remote server function, waits for UDP packet on dest port 12000, replies to src port
+   """remote server function, waits for UDP packet on dest port 12000,
+   replies to src port
    :returns: None
 
    """
-   timeouts = [1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 45, 60, 70, 80, 90, 100, 110, 120]
+   timeouts = [1, 2, 3, 4, 5, 10, 15, 20, 25, 30,
+               45, 60, 70, 80, 90, 100, 110, 120]
    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
    sock.bind(('', 12000))
 
