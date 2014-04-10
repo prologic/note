@@ -1134,6 +1134,10 @@ class Runner(object):
 
       info = self.db.getItem(ID)
 
+      if not info:
+         print 'No Results'
+         return
+
       print u"{red}ID: {reset} {ID}".format(red=FRED, reset=RS, ID=int(ID))
       del info['ID']
 
