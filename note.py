@@ -208,13 +208,22 @@ class mongoDB(dbBaseClass):
 
       return note
 
+   def getAllItemTypes(self):
+      """
+
+      """
+
+      collections = self.noteDB.collection_names()
+      collections.remove(u'system.indexes')
+      collections.remove(u'IDs')
+      return collections
+
    def getItemType(self, itemID):
       """
          Given an itemID, return the "type" i.e. the collection it belongs to.
       """
-      collections = self.noteDB.collection_names()
-      collections.remove(u'system.indexes')
-      collections.remove(u'IDs')
+
+      collections = self.getAllItemTypes()
 
       for coll in collections:
          note = self.noteDB[coll].find_one({"ID": itemID})
