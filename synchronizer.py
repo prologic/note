@@ -11,6 +11,7 @@ import time
 import copy
 import sys
 import select
+import zmq
 
 
 def parseArgs():
@@ -236,14 +237,18 @@ class NoteSynchronizer(threading.Thread):
    def __init__(self, neighborManager):
 
       self.neighborManager = neighborManager
+      self.ctx = zmq.Context.instance()
+      self.publisher = self.ctx.socket(zmq.PUB)
+      self.publisher.bind("tcp://*:25001")
+      self.subscriber = self.ctx.socket(zmq.SUB)
+      self.subscriber.bind("tcp://*:25001")
 
    def run(self):
 
       neighbors = self.neighborManager.getNeighbors()
 
       for neigh in neighbors:
-
-
+         pass
 
 
 def main():
