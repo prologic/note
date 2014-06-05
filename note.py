@@ -147,7 +147,7 @@ class mongoDB(dbBaseClass):
       """
       collection = self.noteDB[itemType]
       Weights = {ii: 1 for ii in itemContents.keys()}
-      if collection not in self.noteDB.collection_names():
+      if collection.name not in self.noteDB.collection_names():
          collection.create_index([(collection.name, "text"), ("tags", "text")],
                                  weights=Weights)
 
